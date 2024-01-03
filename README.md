@@ -2,8 +2,7 @@
 A straight simple staggering class built around p5.js
 
 
-![example](https://github.com/amehowc/p5.stagger.js/assets/38710749/f93c4f72-f32a-4352-9da2-cc345b76df32)
-
+[stagger](https://github.com/amehowc/p5.stagger.js/assets/38710749/38cc61da-5e50-49f9-a90b-414f8a087811)
 
 
 ## A GSAP-inspired, frame-agnostic, no-dependency, highly customizable stagger

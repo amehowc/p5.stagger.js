@@ -1,6 +1,7 @@
 # p5.stagger.js
 A straight simple staggering class built around p5.js
 
+https://github.com/amehowc/p5.stagger.js/assets/38710749/f93c4f72-f32a-4352-9da2-cc345b76df32
 
 ## A GSAP-inspired, frame-agnostic, no-dependency, highly customizable stagger
 
@@ -41,7 +42,7 @@ The animations are stored as object in an array.
 To get the elements progress, you can iterate over the array
 
 ```js
- for(let i =0 ; i<stagger.num; i++){
+ for(let i = 0 ; i < stagger.num; i++){
     const animation = stagger.animations[i]
     const progress = animation.progress
  }

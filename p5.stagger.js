@@ -37,6 +37,10 @@ function Stagger(num = 12, offset = 2, initialize = true) {
 					if (p < 0.5) return 0.5 * pow(2 * p, g);
 					else return 1 - 0.5 * pow(2 * (1 - p), g);
 				};
+	
+	this.withFrames =(actualFrame, duration = 1)=>{
+			return Math.max(0,Math.min((actualFrame/duration),1))
+	}
 
 	this.revert = (revert) => {
 		if (this.reverted !== revert) {

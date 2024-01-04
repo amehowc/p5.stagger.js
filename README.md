@@ -90,7 +90,14 @@ The p5.js `map()` function comes pretty handy in this case ( don't forget to add
 The build function is called internally when the class is initialized. It can be used to change the number or the offset of all the elements dynamically. The progress will not be affected by this.
 
 ```js
- stagger.build(num : number, offser : number)
+ stagger.build(num : number, offset : number)
+```
+### Stagger.withFrames()
+
+A helper to be used with requestAnimationFrame() that return the progress of an animation between [0-1]
+
+```js
+ stagger.withFrames(progress : number, duration : number)
 ```
 
 ### Stagger.revert()

@@ -1,17 +1,27 @@
-function Stagger(num = 12, offset = 2, initialize = true) {
+function Stagger(initialize = false, num = 12, offset = 2, revert = false) {
 	this.num = num;
-	this.offset = Math.max(0, offset);
+	this.offset = Math.min(Math.max(0, offset),2);
 	this.totalduration = Math.ceil(1 + this.offset);
-	this.reverted = true;
+	this.reverted = revert;
 	this.animations = [];
-	this.build = (num) => {
-		if (num !== this.num) this.num = num;
+	this.isReady = false
+	this.isDone =()=>{
+		return this.animations.every((animation)=>{
+			return animation.progress === 1
+		})
+	}
+	this.build = (num, offset, revert) => {
+		if ((num !== undefined && num !== null) && num !== this.num) this.num = num;
+		if ((offset !== undefined && offset !== null) && offset !== this.offset) this.offset = Math.min(Math.max(0, offset),2);
+		if ((revert !== undefined && revert !== null) && revert !== this.revert) this.revert = revert;
+
+		this.animations =[]
 		for (let i = 0; i < this.num; i++) {
 			this.animations[i] = {
 				id: i,
 				index:
 					this.num === 1
-						? 1
+						? 0
 						: Math.min(
 								1,
 								this.reverted ? 1 - i / (this.num - 1) : i / (this.num - 1)
@@ -26,6 +36,7 @@ function Stagger(num = 12, offset = 2, initialize = true) {
 				},
 			};
 		}
+		this.isReady = true
 	};
 	if (!!initialize) {
 		this.build(this.num);
@@ -37,8 +48,8 @@ function Stagger(num = 12, offset = 2, initialize = true) {
 	};
 
 	this.ease = (p = 0, g = 2) => {
-		if (p < 0.5) return 0.5 * pow(2 * p, g);
-		else return 1 - 0.5 * pow(2 * (1 - p), g);
+		if (p < 0.5) return 0.5 * Math.pow(2 * p, g);
+		else return 1 - 0.5 * Math.pow(2 * (1 - p), g);
 	};
 
 	this.withFrames = (actualFrame, duration = 1) => {
